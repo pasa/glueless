@@ -1,5 +1,5 @@
 FROM alpine:latest
-ENV VERSION=v4.1.1
+ENV VERSION=v4.1.0
 WORKDIR /hiddify
 RUN apk add curl tar gzip libc6-compat iptables ip6tables redsocks
 
