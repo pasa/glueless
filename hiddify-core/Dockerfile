@@ -1,9 +1,9 @@
 FROM alpine:latest
-ENV VERSION=v3.1.8
+ENV VERSION=v4.1.1
 WORKDIR /hiddify
 RUN apk add curl tar gzip libc6-compat iptables ip6tables redsocks
 
-RUN echo "architecture: $(apk --print-arch)" && \    
+RUN echo "architecture: $(apk --print-arch)" && \
     case "$(apk --print-arch)" in \
             x86_64) ARCH=amd64 ;; \
             i386|x86) ARCH=386 ;; \
