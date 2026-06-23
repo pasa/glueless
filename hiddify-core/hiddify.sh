@@ -91,6 +91,8 @@ trap cleanup TERM INT
 log_message "Setting up logging infrastructure..."
 setup_log_pipes
 
+/hiddify/HiddifyCli version
+
 # Start HiddifyCli
 log_message "Starting HiddifyCli..."
 if [ -f "/hiddify/hiddify-config.json" ]; then
