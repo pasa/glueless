@@ -97,9 +97,7 @@ trap cleanup TERM INT
 log_message "Setting up logging infrastructure..."
 setup_log_pipes
 
-ls -1 -l /hiddify/ | log_pipe
-
-/hiddify/HiddifyCli version | log_pipe
+/hiddify/HiddifyCli version 2>&1 | log_pipe
 
 # Start HiddifyCli
 log_message "Starting HiddifyCli..."
