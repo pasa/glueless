@@ -14,7 +14,7 @@ log_message() {
 
 log_pipe() {
   while read -r line; do
-    log_message $line
+    log_message "$line"
   done
 }
 
@@ -97,7 +97,7 @@ trap cleanup TERM INT
 log_message "Setting up logging infrastructure..."
 setup_log_pipes
 
-ls -l /hiddify/ | log_pipe
+ls -1 -l /hiddify/ | log_pipe
 
 /hiddify/HiddifyCli version | log_pipe
 
@@ -109,6 +109,8 @@ else
     /hiddify/HiddifyCli run --config /hiddify/proxy-config.json > "$HIDDIFY_PIPE" 2>&1 &
 fi
 HIDDIFY_PID=$!
+
+log_message "HIDDIFY_PID = $HIDDIFY_PID"
 
 log_message "Checking if SOCKS5 proxy is ready..."
 for i in $(seq 1 10); do
