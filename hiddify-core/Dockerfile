@@ -16,7 +16,7 @@ RUN echo "architecture: $(apk --print-arch)" && \
         esac && \
         echo "Downloading https://github.com/hiddify/hiddify-core/releases/download/${VERSION}/hiddify-lib-linux-$ARCH.tar.gz" && \
         curl -L -o hiddify-lib.tar.gz https://github.com/hiddify/hiddify-core/releases/download/${VERSION}/hiddify-lib-linux-$ARCH.tar.gz && \
-        tar -xzf hiddify-lib.tar.gz -C /hiddify && rm hiddify-lib.tar.gz
+        tar -xzf hiddify-lib.tar.gz && rm hiddify-lib.tar.gz
 COPY hiddify.sh .
 COPY healthcheck.sh .
 COPY redsocks.conf .
