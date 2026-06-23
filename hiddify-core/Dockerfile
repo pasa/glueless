@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM ubuntu:latest
 ENV VERSION=v4.1.0
 WORKDIR /hiddify
 RUN apk add curl tar gzip libc6-compat iptables ip6tables redsocks bash
