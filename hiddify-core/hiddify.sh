@@ -8,9 +8,13 @@ HIDDIFY_PIPE="/hiddify/logs/hiddify.pipe"
 REDSOCKS_PIPE="/hiddify/logs/redsocks.pipe"
 
 log_message() {
-  while read -r line; do
-    local message="$(date '+%Y-%m-%d %H:%M:%S') [GLUELESS] $line"
+    local message="$(date '+%Y-%m-%d %H:%M:%S') [GLUELESS] $1"
     echo "$message" | tee -a "$LOG_FILE"
+}
+
+log_pipe() {
+  while read -r line; do
+    log_message $line
   done
 }
 
@@ -93,7 +97,7 @@ trap cleanup TERM INT
 log_message "Setting up logging infrastructure..."
 setup_log_pipes
 
-/hiddify/HiddifyCli version | log_message
+/hiddify/HiddifyCli version | log_pipe
 
 # Start HiddifyCli
 log_message "Starting HiddifyCli..."
