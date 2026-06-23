@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 ENV VERSION=v4.1.0
 WORKDIR /hiddify
-RUN apt install curl tar gzip libc6-compat iptables ip6tables redsocks bash
+RUN apt-get install curl tar gzip libc6-compat iptables ip6tables redsocks bash
 
 RUN echo "architecture: $(apk --print-arch)" && \
     case "$(apk --print-arch)" in \
