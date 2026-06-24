@@ -5,8 +5,8 @@ RUN apt-get update
 RUN apt-get -y install curl tar gzip iptables redsocks bash
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN echo "architecture: $(apk --print-arch)" && \
-    case "$(apk --print-arch)" in \
+RUN echo "architecture: $(arch)" && \
+    case "$(arch)" in \
             x86_64) ARCH=amd64 ;; \
             i386|x86) ARCH=386 ;; \
             aarch64) ARCH=arm64 ;; \
@@ -14,7 +14,7 @@ RUN echo "architecture: $(apk --print-arch)" && \
             armv6|armhf) ARCH=armv6 ;; \
             armv5) ARCH=armv5 ;; \
             s390x) ARCH=s390x ;; \
-            *) echo "Unsupported architecture: $(apk --print-arch) $(uname -m)" && exit 1 ;; \
+            *) echo "Unsupported architecture: $(arch) $(uname -m)" && exit 1 ;; \
         esac && \
         echo "Downloading https://github.com/hiddify/hiddify-core/releases/download/${VERSION}/hiddify-lib-linux-$ARCH.tar.gz" && \
         curl -L -o hiddify-lib.tar.gz https://github.com/hiddify/hiddify-core/releases/download/${VERSION}/hiddify-lib-linux-$ARCH.tar.gz && \
