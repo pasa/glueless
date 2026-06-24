@@ -2,7 +2,7 @@ FROM ubuntu:latest
 ENV VERSION=v4.1.0
 WORKDIR /hiddify
 RUN apt-get update
-RUN apt-get -y install curl tar gzip iptables redsocks bash
+RUN apt-get -y install curl tar gzip iptables redsocks net-tools bash
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN echo "architecture: $(arch)" && \
