@@ -102,9 +102,9 @@ setup_log_pipes
 # Start HiddifyCli
 log_message "Starting HiddifyCli..."
 if [ -f "/hiddify/hiddify-config.json" ]; then
-    /hiddify/HiddifyCli run --config /hiddify/proxy-config.json -d /hiddify/hiddify-config.json > "$HIDDIFY_PIPE" 2>&1 &
+    /hiddify/HiddifyCli run --config /hiddify/proxy-config.json -d /hiddify/hiddify-config.json -D /hiddify/data > "$HIDDIFY_PIPE" 2>&1 &
 else
-    /hiddify/HiddifyCli run --config /hiddify/proxy-config.json > "$HIDDIFY_PIPE" 2>&1 &
+    /hiddify/HiddifyCli run --config /hiddify/proxy-config.json -D /hiddify/data > "$HIDDIFY_PIPE" 2>&1 &
 fi
 HIDDIFY_PID=$!
 
